@@ -1,6 +1,6 @@
 /*CRIAR TABELAS*/
 
-USE projeto_tarefas;
+USE project_tasks;
 
 CREATE TABLE tasks(
 	id VARCHAR (36) primary key,

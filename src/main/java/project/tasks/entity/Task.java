@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -26,6 +27,12 @@ public class Task {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "")
+    private LocalTime dueTime;
+
+    @Column(name = "")
+    private boolean isArchived;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

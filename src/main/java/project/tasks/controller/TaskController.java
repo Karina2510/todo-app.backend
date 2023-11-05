@@ -1,4 +1,4 @@
-package projeto.tarefas.controller;
+package project.tasks.controller;
 
 
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package projeto.tarefas.service;
+package project.tasks.service;
 
 
 import org.springframework.stereotype.Service;

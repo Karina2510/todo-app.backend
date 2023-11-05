@@ -1,4 +1,4 @@
-package projeto.tarefas.entity;
+package project.tasks.entity;
 
 
 import jakarta.persistence.*;

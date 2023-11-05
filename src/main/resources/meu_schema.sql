@@ -1,6 +1,6 @@
 /*CRIAR TABELAS*/
 
-USE project_tasks;
+use project_tasks;
 
 CREATE TABLE tasks(
 	id VARCHAR (36) primary key,
@@ -19,8 +19,8 @@ CREATE TABLE routines(
     FOREIGN KEY (tasks_id) REFERENCES TASKS(id)
 );
 
-INSERT INTO tasks(id, name, due_time, created_at, update_at) values ('BBBBB', 'curso JPA', '18:30', '2023-10-25 18:30:20', '2023-10-25 19:40:25');
-INSERT INTO routines(id, due_date, due_time, is_finished, tasks_id) values ('BBBBB', 'curso JPA', '18:30', '2023-10-25 18:30:20', '2023-10-25 19:40:25');
+INSERT INTO tasks(id, name, due_time, is_archived, created_at, update_at) values ('AAAA','curso JPA', '18:30', false, '2023-10-25 18:30:20', '2023-10-25 19:40:25');
+INSERT INTO routines(id, tasks_id, due_date, is_finished) values ('BBBBB', 'AAAA','2023-10-25 18:30:20', false);
 
 
 

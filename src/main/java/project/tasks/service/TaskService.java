@@ -24,7 +24,7 @@ public class TaskService {
                 Task.builder()
                         .id(UUID.randomUUID().toString())
                         .name(input.getName())
-                        .dueTime(LocalTime.from(input.getDueTime()))
+                        .dueTime(input.getDueTime())
                         .isArchived(false)
                         .createdAt(LocalDateTime.now())
                         .updateAt(LocalDateTime.now())

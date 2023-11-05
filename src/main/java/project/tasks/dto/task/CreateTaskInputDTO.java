@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -17,5 +18,5 @@ public class CreateTaskInputDTO {
     private String name;
 
     @JsonProperty("dueTime")
-    private LocalDateTime dueTime;
+    private LocalTime dueTime;
 }

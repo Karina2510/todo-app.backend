@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TaskInputDTO {
+public class CreateTaskInputDTO {
 
     @JsonProperty("name")
     private String name;

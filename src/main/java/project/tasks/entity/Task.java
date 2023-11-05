@@ -28,11 +28,11 @@ public class Task {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "")
+    @Column(name = "due_time")
     private LocalTime dueTime;
 
-    @Column(name = "")
-    private boolean isArchived;
+    @Column(name = "is_archived")
+    private Boolean isArchived;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

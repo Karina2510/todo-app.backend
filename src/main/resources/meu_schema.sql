@@ -6,6 +6,7 @@ CREATE TABLE tasks(
 	id VARCHAR (36) primary key,
     name VARCHAR (200) NOT NULL,
     due_time TIME,
+    is_archived boolean,
     created_at DATETIME NOT NULL,
     update_at DATETIME NOT NULL
 );

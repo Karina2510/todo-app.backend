@@ -1,4 +1,4 @@
-package projeto.tarefas.entity;
+package project.tasks.entity;
 
 
 import jakarta.persistence.*;
@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -27,10 +28,16 @@ public class Task {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "due_time")
+    private LocalTime dueTime;
+
+    @Column(name = "is_archived")
+    private Boolean isArchived;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private LocalDateTime updateAt;
 
     @OneToMany(mappedBy = "task")

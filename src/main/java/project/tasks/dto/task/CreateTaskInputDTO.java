@@ -17,6 +17,6 @@ public class CreateTaskInputDTO {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("dueTime")
+    @JsonProperty("due_time")
     private LocalTime dueTime;
 }

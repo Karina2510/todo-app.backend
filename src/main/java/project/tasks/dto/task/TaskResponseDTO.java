@@ -20,15 +20,15 @@ public class TaskResponseDTO {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("dueTime")
+    @JsonProperty("due_time")
     private LocalTime dueTime;
 
-    @JsonProperty("isArchived")
+    @JsonProperty("is_archived")
     private Boolean isArchived;
 
-    @JsonProperty("createdAt")
+    @JsonProperty("created_at")
     private LocalDateTime createdAt;
 
-    @JsonProperty("updateAt")
+    @JsonProperty("update_at")
     private LocalDateTime updateAt;
 }

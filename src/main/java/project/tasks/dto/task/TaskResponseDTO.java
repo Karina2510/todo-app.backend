@@ -29,6 +29,6 @@ public class TaskResponseDTO {
     @JsonProperty("created_at")
     private LocalDateTime createdAt;
 
-    @JsonProperty("update_at")
+    @JsonProperty("updated_at")
     private LocalDateTime updateAt;
 }

@@ -1,6 +1,7 @@
 package project.tasks.service;
 
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.tasks.dto.task.CreateTaskInputDTO;
@@ -32,6 +33,20 @@ public class TaskService {
 
         task = taskRepository.save(task);
 
+
+        return TaskResponseDTO.builder()
+                .id(task.getId())
+                .name(task.getName())
+                .dueTime(task.getDueTime())
+                .isArchived(task.getIsArchived())
+                .createdAt(task.getCreatedAt())
+                .updateAt(task.getUpdateAt())
+                .build();
+    }
+
+    public TaskResponseDTO findById(String id){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
 
         return TaskResponseDTO.builder()
                 .id(task.getId())

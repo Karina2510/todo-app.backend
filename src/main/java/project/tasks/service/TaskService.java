@@ -58,5 +58,12 @@ public class TaskService {
                 .build();
     }
 
+    public void deleteTaskById(String id){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
+
+        taskRepository.delete(task);
+    }
+
 
 }

@@ -26,7 +26,7 @@ public class TaskController {
 
     @GetMapping("{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public ResponseEntity findBydId(@PathVariable String id){
-        return ResponseEntity.ok().body(service.findById(id));
+    public ResponseEntity taskFindBydId(@PathVariable String id){
+        return ResponseEntity.ok().body(service.taskFindBydId(id));
     }
 }

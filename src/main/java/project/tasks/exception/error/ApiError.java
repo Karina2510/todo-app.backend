@@ -1,4 +1,4 @@
-package projeto.carrinhoCompra.exception.error;
+package project.tasks.exception.error;
 
 import lombok.Builder;
 import lombok.Data;

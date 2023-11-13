@@ -1,11 +1,12 @@
-package projeto.carrinhoCompra.exception;
+package project.tasks.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import projeto.carrinhoCompra.exception.error.ApiError;
+import project.tasks.exception.error.ApiError;
+
 
 import java.time.LocalDateTime;
 

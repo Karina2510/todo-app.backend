@@ -1,4 +1,4 @@
-package projeto.carrinhoCompra.exception.error;
+package project.tasks.exception.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

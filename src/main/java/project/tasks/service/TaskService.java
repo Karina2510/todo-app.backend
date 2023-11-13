@@ -10,7 +10,6 @@ import project.tasks.entity.Task;
 import project.tasks.repository.TaskRepository;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.UUID;
 
 @Service
@@ -44,7 +43,7 @@ public class TaskService {
                 .build();
     }
 
-    public TaskResponseDTO findById(String id){
+    public TaskResponseDTO taskFindById(String id){
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
 

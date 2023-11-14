@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import project.tasks.dto.task.CreateTaskInputDTO;
 import project.tasks.dto.task.TaskResponseDTO;
 import project.tasks.entity.Task;
+import project.tasks.exception.TaskException;
 import project.tasks.repository.TaskRepository;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,15 @@ public class TaskService {
 
 
     public TaskResponseDTO createTask(CreateTaskInputDTO input){
+
+        if(input.getName().isEmpty()){
+            throw new TaskException("O campo name está em branco");
+        }
+
+        if(input.getDueTime() == null){
+            throw new TaskException("O campo due_time está em branco");
+        }
+
         Task task =
                 Task.builder()
                         .id(UUID.randomUUID().toString())

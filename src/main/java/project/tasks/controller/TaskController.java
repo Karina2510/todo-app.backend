@@ -23,4 +23,10 @@ public class TaskController {
             @RequestBody @Valid CreateTaskInputDTO createTaskInputDTO){
         return ResponseEntity.ok().body(service.createTask(createTaskInputDTO));
     }
+
+    @GetMapping("{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity taskFindBydId(@PathVariable String id){
+        return ResponseEntity.ok().body(service.taskFindBydId(id));
+    }
 }

@@ -53,7 +53,7 @@ public class TaskService {
                 .build();
     }
 
-    public TaskResponseDTO taskFindBydId(String id){
+    public TaskResponseDTO taskFindById(String id){
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
 
@@ -65,6 +65,13 @@ public class TaskService {
                 .createdAt(task.getCreatedAt())
                 .updateAt(task.getUpdateAt())
                 .build();
+    }
+
+    public void deleteTaskById(String id){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
+
+        taskRepository.delete(task);
     }
 
 

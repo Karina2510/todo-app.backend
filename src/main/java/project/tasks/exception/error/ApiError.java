@@ -11,15 +11,9 @@ import java.util.List;
 @Data
 @Builder
 public class ApiError {
-    private Integer codigoErro;
+    private Integer codeError;
     private HttpStatus statusErro;
-    private String mensagem;
-    private List<ApiValidationError> subErros = new ArrayList<>();
-
-
+    private String mensage;
     private LocalDateTime timestamp;
 
-    public void addSubErrors(ApiValidationError error) {
-        this.subErros.add(error);
-    }
 }

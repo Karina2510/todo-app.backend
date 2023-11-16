@@ -13,7 +13,7 @@ import java.util.List;
 public class ApiError {
     private Integer codeError;
     private HttpStatus statusErro;
-    private String mensage;
+    private String message;
     private LocalDateTime timestamp;
 
 }

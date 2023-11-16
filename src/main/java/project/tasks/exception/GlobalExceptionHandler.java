@@ -24,7 +24,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return this.buildResponseEntity(ApiError.builder()
                 .codeError(BAD_REQUEST.value())
                 .statusErro(BAD_REQUEST)
-                .mensage(exception.getMessage())
+                .message(exception.getMessage())
                 .timestamp(LocalDateTime.now())
                 .build());
     }
@@ -39,18 +39,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         GlobalError globalError =
                 GlobalError.builder()
-                        .errorCode(HttpStatus.BAD_REQUEST.value())
-                        .erros(
+                        .errorCode(BAD_REQUEST.value())
+                        .error(
                                 Arrays.asList(
                                         ApiError.builder()
                                                 .codeError(BAD_REQUEST.value())
                                                 .statusErro(BAD_REQUEST)
-                                                .mensage(ex.getMessage())
+                                                .message(ex.getMessage())
                                                 .timestamp(LocalDateTime.now())
                                                 .build()))
 
                         .build();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(globalError);
+        return ResponseEntity.status(BAD_REQUEST).body(globalError);
 
     }
 }

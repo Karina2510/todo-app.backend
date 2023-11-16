@@ -21,5 +21,5 @@ public class GlobalError {
 
     private String traceId;
 
-    private List<ApiError> erros;
+    private List<ApiError> error;
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.tasks.dto.task.CreateTaskInputDTO;
 import project.tasks.dto.task.TaskResponseDTO;
+import project.tasks.dto.task.UpdateTaskDTO;
 import project.tasks.entity.Task;
 import project.tasks.exception.TaskException;
 import project.tasks.repository.TaskRepository;
@@ -65,6 +66,18 @@ public class TaskService {
                 .createdAt(task.getCreatedAt())
                 .updateAt(task.getUpdateAt())
                 .build();
+    }
+
+
+    public void updateTask(String id, UpdateTaskDTO updateTaskDTO){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
+
+        task.setName(updateTaskDTO.getName());
+        task.setDueTime(updateTaskDTO.getDueTime());
+
+        taskRepository.save(task);
+
     }
 
     public void deleteTaskById(String id){

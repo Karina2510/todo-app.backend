@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.tasks.dto.task.CreateTaskInputDTO;
 import project.tasks.dto.task.TaskResponseDTO;
+import project.tasks.dto.task.UpdateTaskDTO;
 import project.tasks.service.TaskService;
 
 @RestController
@@ -28,6 +29,13 @@ public class TaskController {
     @ResponseStatus(code = HttpStatus.OK)
     public ResponseEntity taskFindBydId(@PathVariable String id){
         return ResponseEntity.ok().body(service.taskFindById(id));
+    }
+
+    @PutMapping("{id}")
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    public ResponseEntity updateTask(
+            @PathVariable String id, @RequestBody @Valid UpdateTaskDTO updateTaskDTO){
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("{id}")

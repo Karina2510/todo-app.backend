@@ -3,6 +3,7 @@ package project.tasks.dto.task;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -12,7 +13,7 @@ import java.time.LocalTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class TaskResponseDTO {
+public class TaskResponseDTO implements Serializable {
 
     @JsonProperty("id")
     private String id;

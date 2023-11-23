@@ -31,11 +31,11 @@ public class TaskController {
         return ResponseEntity.ok().body(service.taskFindById(id));
     }
 
-    @PutMapping("{id}")
-    @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public ResponseEntity updateTask(
-            @PathVariable String id, @RequestBody @Valid UpdateTaskDTO updateTaskDTO){
-        return ResponseEntity.noContent().build();
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskResponseDTO> updateTask(
+            @RequestBody UpdateTaskDTO updateTaskDTO, @PathVariable String id){
+        TaskResponseDTO taskResponseDTO = service.updateTaskDTO(id, updateTaskDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(taskResponseDTO);
     }
 
     @DeleteMapping("{id}")

@@ -12,6 +12,7 @@ import project.tasks.exception.TaskException;
 import project.tasks.repository.TaskRepository;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -69,14 +70,31 @@ public class TaskService {
     }
 
 
-    public void updateTask(String id, UpdateTaskDTO updateTaskDTO){
+    public TaskResponseDTO updateTaskDTO(String id, UpdateTaskDTO updateTaskDTO){
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
 
-        task.setName(updateTaskDTO.getName());
-        task.setDueTime(updateTaskDTO.getDueTime());
+        Optional.ofNullable(updateTaskDTO.getName()).ifPresent(name -> task.setName(name));
+        Optional.ofNullable(updateTaskDTO.getDueTime()).ifPresent(dueTime -> task.setDueTime(dueTime));
+
+        if (updateTaskDTO.getName().isEmpty()){
+            throw new TaskException("O campo name está em branco");
+        }
+
+        if (updateTaskDTO.getDueTime() == null){
+            throw new TaskException("O campo due_time está em branco");
+        }
 
         taskRepository.save(task);
+
+        return TaskResponseDTO.builder()
+                .id(task.getId())
+                .name(task.getName())
+                .dueTime(task.getDueTime())
+                .isArchived(task.getIsArchived())
+                .createdAt(task.getCreatedAt())
+                .updateAt(task.getUpdateAt())
+                .build();
 
     }
 

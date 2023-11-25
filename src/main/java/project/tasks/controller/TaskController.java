@@ -30,6 +30,11 @@ public class TaskController {
     public ResponseEntity taskFindBydId(@PathVariable String id){
         return ResponseEntity.ok().body(service.taskFindById(id));
     }
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity listTasks(){
+        return ResponseEntity.ok().body(service.listTask());
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskResponseDTO> updateTask(

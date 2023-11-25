@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.tasks.dto.task.CreateTaskInputDTO;
 import project.tasks.dto.task.TaskResponseDTO;
+import project.tasks.dto.task.UpdateTaskDTO;
 import project.tasks.entity.Task;
 import project.tasks.exception.TaskException;
 import project.tasks.repository.TaskRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
@@ -67,6 +71,42 @@ public class TaskService {
                 .build();
     }
 
+
+    public TaskResponseDTO updateTaskDTO(String id, UpdateTaskDTO updateTaskDTO){
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));
+
+        Optional.ofNullable(updateTaskDTO.getName()).ifPresent(name -> task.setName(name));
+        Optional.ofNullable(updateTaskDTO.getDueTime()).ifPresent(dueTime -> task.setDueTime(dueTime));
+
+        if (updateTaskDTO.getName().isEmpty()){
+            throw new TaskException("O campo name está em branco");
+        }
+
+        if (updateTaskDTO.getDueTime() == null){
+            throw new TaskException("O campo due_time está em branco");
+        }
+
+        taskRepository.save(task);
+
+        return TaskResponseDTO.builder()
+                .id(task.getId())
+                .name(task.getName())
+                .dueTime(task.getDueTime())
+                .isArchived(task.getIsArchived())
+                .createdAt(task.getCreatedAt())
+                .updateAt(task.getUpdateAt())
+                .build();
+
+    }
+
+    public List<TaskResponseDTO> listTask(){
+        List<Task> tasks = taskRepository.findAll();
+
+        return tasks.stream().map(task ->
+                new TaskResponseDTO(task.getId(), task.getName(), task.getDueTime(),
+                        task.getIsArchived(), task.getCreatedAt(), task.getUpdateAt())).collect(Collectors.toList());
+    }
     public void deleteTaskById(String id){
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Task de id " + id + " não encontrada"));

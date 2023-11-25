@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.tasks.dto.task.CreateTaskInputDTO;
 import project.tasks.dto.task.TaskResponseDTO;
+import project.tasks.dto.task.UpdateTaskDTO;
 import project.tasks.service.TaskService;
 
 @RestController
@@ -28,6 +29,18 @@ public class TaskController {
     @ResponseStatus(code = HttpStatus.OK)
     public ResponseEntity taskFindBydId(@PathVariable String id){
         return ResponseEntity.ok().body(service.taskFindById(id));
+    }
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity listTasks(){
+        return ResponseEntity.ok().body(service.listTask());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<TaskResponseDTO> updateTask(
+            @RequestBody UpdateTaskDTO updateTaskDTO, @PathVariable String id){
+        TaskResponseDTO taskResponseDTO = service.updateTaskDTO(id, updateTaskDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(taskResponseDTO);
     }
 
     @DeleteMapping("{id}")
